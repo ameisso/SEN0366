@@ -8,7 +8,7 @@
 
 #include "Arduino.h"
 
-
+//#define SEN0366_DEBUG
 
 typedef void (*DistanceCallback)(float distance);
 static DistanceCallback distanceCallback;
