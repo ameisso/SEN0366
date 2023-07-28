@@ -29,7 +29,7 @@ void SEN0366::update()
 
     for (int i = 0; i < answerSize; i++)
     {
-      SEN0366_DEBUG_PRINT(_data[i], HEX);
+      SEN0366_DEBUG_PRINT_HEX(_data[i]);
       SEN0366_DEBUG_PRINT(" ,");
     }
     SEN0366_DEBUG_PRINTLN();
