@@ -1,0 +1,25 @@
+{
+    "name": "SEN0366",
+    "version": "1.0.0",
+    "description": "SEN0366 distance sensor utility",
+    "keywords": "distance",
+    "repository":
+    {
+      "type": "git",
+      "url": ""
+    },
+    "authors":
+    [
+      {
+        "name": "Antoine Meissonnier",
+        "email": "ameisso@gmail.com",
+        "url": "ameisso.fr"
+      }
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "dependencies": {
+    },
+    "frameworks": "*",
+    "platforms": "*"
+  }
