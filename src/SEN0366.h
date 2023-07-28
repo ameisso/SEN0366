@@ -8,6 +8,8 @@
 
 #include "Arduino.h"
 
+
+
 typedef void (*DistanceCallback)(float distance);
 static DistanceCallback distanceCallback;
 
@@ -93,5 +95,17 @@ private:
   bool _waitingForAnswer = false;
   float _lastMesuredDistance = -1;
 };
+
+
+#ifdef SEN0366_DEBUG
+#define SEN0366_DEBUG_PRINT(x) Serial.print(x)
+#define SEN0366_DEBUG_PRINT_HEX(x) Serial.print(x, HEX)
+#define SEN0366_DEBUG_PRINTLN(x) Serial.println(x)
+#else
+#define SEN0366_DEBUG_PRINT(x)
+#define SEN0366_DEBUG_PRINT_HEX(x)
+#define SEN0366_DEBUG_PRINTLN(x)
+#endif
+
 
 #endif

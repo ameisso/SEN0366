@@ -22,21 +22,22 @@ void SEN0366::update()
     int answerSize = _serial->available();
     unsigned char _data[answerSize] = {0};
 
-    Serial.print("ANSWER [");
-    Serial.print(answerSize);
-    Serial.print("] ");
     _serial->readBytes(_data, answerSize);
+    SEN0366_DEBUG_PRINT("ANSWER [");
+    SEN0366_DEBUG_PRINT(answerSize);
+    SEN0366_DEBUG_PRINT("] ");
+
     for (int i = 0; i < answerSize; i++)
     {
-      Serial.print(_data[i], HEX);
-      Serial.print(" ,");
+      SEN0366_DEBUG_PRINT(_data[i], HEX);
+      SEN0366_DEBUG_PRINT(" ,");
     }
-    Serial.println();
+    SEN0366_DEBUG_PRINTLN();
     _waitingForAnswer = false;
     char CRC = computeCRC(_data, answerSize - 1);
     if (CRC != _data[answerSize - 1])
     {
-      Serial.println("answer skipped wrong CRC");
+      SEN0366_DEBUG_PRINTLN("answer skipped wrong CRC");
       if (errorCallback)
       {
         errorCallback("COMMAND SKIPPED WRONG CRC");
@@ -170,8 +171,8 @@ void SEN0366::update()
           itoa(_data[i], hexVal, 16);
           answer.concat(hexVal);
           answer.concat(", ");
-          Serial.print(_data[i], HEX);
-          Serial.print(",");
+          SEN0366_DEBUG_PRINT_HEX(_data[i]);
+          SEN0366_DEBUG_PRINT(",");
         }
         consoleCallback(answer);
       }
@@ -194,8 +195,8 @@ void SEN0366::update()
           itoa(_data[i], hexVal, 16);
           answer.concat(hexVal);
           answer.concat(", ");
-          Serial.print(_data[i], HEX);
-          Serial.print(",");
+          SEN0366_DEBUG_PRINT_HEX(_data[i]);
+          SEN0366_DEBUG_PRINT(",");
         }
         consoleCallback(answer);
       }
@@ -211,10 +212,10 @@ void SEN0366::update()
         itoa(_data[i], hexVal, 16);
         answer.concat(hexVal);
         answer.concat(", ");
-        Serial.print(_data[i], HEX);
-        Serial.print(",");
+        SEN0366_DEBUG_PRINT_HEX(_data[i]);
+        SEN0366_DEBUG_PRINT(",");
       }
-      Serial.println("\n------------");
+      SEN0366_DEBUG_PRINTLN("\n------------");
       if (errorCallback)
       {
         errorCallback(answer);
@@ -228,7 +229,7 @@ void SEN0366::update()
     {
       errorCallback("TIMEOUT");
     }
-    Serial.println("timeout");
+    SEN0366_DEBUG_PRINTLN("timeout");
   }
 }
 
@@ -283,9 +284,6 @@ void SEN0366::setMesureFromTop()
 
 void SEN0366::command(char *data, int length)
 {
-  Serial.print(" command of ");
-  Serial.print(length);
-  Serial.println(" bytes ");
   sendCommand(data, length);
 }
 
