@@ -3,6 +3,10 @@
   Created by Antoine M* (ameisso.fr), JULY 14, 2023.
   MIT LICENSE
 */
+
+
+#warning todo : add command to change device address, getters and setters for device address
+
 #ifndef SEN0366_h
 #define SEN0366_h
 
