@@ -45,7 +45,7 @@ void SEN0366::update()
       return;
     }
     // PARSING ANSWERS
-    if (_data[0] == 0x80 && _data[1] == 0x06 && (_data[2] == 0x82 || _data[2] == 0x83))
+    if (_data[0] == deviceAddress && _data[1] == 0x06 && (_data[2] == 0x82 || _data[2] == 0x83))
     {
       if (_data[3] == 'E' && _data[4] == 'R' && _data[5] == 'R')
       {
@@ -104,14 +104,14 @@ void SEN0366::update()
         }
       }
     }
-    else if (_data[0] == 0x80 && _data[1] == 0x06 && _data[2] == 0x85 && _data[3] == 0x01)
+    else if (_data[0] == deviceAddress && _data[1] == 0x06 && _data[2] == 0x85 && _data[3] == 0x01)
     {
       if (consoleCallback)
       {
         consoleCallback("LASER_ON/OFF");
       }
     }
-    else if (_data[0] == 0x80 && _data[1] == 0x04 && _data[2] == 0x82 && _data[3] == 0xFA)
+    else if (_data[0] == deviceAddress && _data[1] == 0x04 && _data[2] == 0x82 && _data[3] == 0xFA)
     {
       if (consoleCallback)
       {
@@ -184,7 +184,7 @@ void SEN0366::update()
         consoleCallback("DISTANCE REVISED");
       }
     }
-    else if (_data[0] == 0xFA && _data[1] == 0x06 && _data[2] == 0x81 && _data[3] == 0x80)
+    else if (_data[0] == 0xFA && _data[1] == 0x06 && _data[2] == 0x81 && _data[3] == deviceAddress)
     {
       if (consoleCallback)
       {
